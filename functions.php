@@ -77,16 +77,15 @@ if ( ! function_exists( 'tsv1913_fix_default_avatar_url' ) ) {
 add_filter( 'get_avatar_data', 'tsv1913_fix_default_avatar_url');
 
 /**
- * Get form block recipients from theme mod and return as array.
- * @param array $recipients Die Empfänger
- * @param int $form_id Die Formular-ID
- * @param array $fields Die überprüften Felder
- * @param array $files Die überprüften Dateien
- * @since tsv1913 1.2
+ * Change form block recipients.
+ *
+ * @since tsv1913 1.4
  *
  * @return array
  */
-function tsv1913_form_block_recipients( array $recipients, int $form_id, array $fields, array $files ): array {
-	return [ 'kontakt@tsv1913.de' ];
+function tsv1913_form_block_recipients( array $recipients ): array {
+	$recipients = [ 'kontakt@tsv1913.de' ];
+
+	return $recipients;
 }
-add_filter( 'form_block_recipients', 'tsv1913_form_block_recipients' );
+add_filter( 'form_block_recipients', 'tsv1913_form_block_recipients', 10, 1 );
